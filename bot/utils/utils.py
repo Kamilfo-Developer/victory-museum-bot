@@ -80,8 +80,6 @@ def get_dioram_photo_index(html_to_parse: str, dioram_names: list, elem_to_searc
         return -1
 
 def check_keyword_in_tag(keywords: list, tag: str):
-        print(keywords)
-        
         for keyword in keywords:
                 if keyword in tag:
                         return True
@@ -95,9 +93,7 @@ def get_num_of_dioram(html: str, keywords: dict) -> int:
         quotes = soup.find_all('div', class_="CbirObjectResponse-Title") or soup.find_all('span', class_="Button2-Text")
         
         for quote in quotes:
-                for key in keywords.keys():
-                        print(quote, keywords[str(key)])
-                        
+                for key in keywords.keys():                        
                         if check_keyword_in_tag(keywords[key], str(quote)):
                                 return int(key)
 
